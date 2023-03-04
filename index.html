@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="num1"/>
+        <input type="text" v-model="num2"/>
+        <select   v-model="operator" name="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="modu">%</option>
+        
+        </select>
+        <button @click="calculate">calculate</button><br>
+        {{result}}
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            data(){
+                return{
+                    num1: '',
+                    operator: '',
+                    num2: '', 
+                    result:''
+                }
+            },
+            methods:{
+                calculate:function(){
+                    switch(this.operator){
+                     case "+":
+                     this.result = parseInt(this.num1) + parseInt(this.num2);
+                     break;
+                     case "-":
+                     this.result = parseInt(this.num1) - parseInt(this.num2);
+                     break;
+                     case "*":
+                     this.result = parseInt(this.num1) * parseInt(this.num2);
+                     break;
+                     case "/":
+                     this.result = parseInt(this.num1) / parseInt(this.num2);
+                     break;
+                     case "%":
+                     this.result = parseInt(this.num1) % parseInt(this.num2);
+                     break;
+                    }
+                }
+            }
+        }).mount('#app')
+        
+    </script>
+
+</body>
+</html>
